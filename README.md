@@ -1,5 +1,5 @@
 # Java Database Wrapper
-Just a simple project to standardize the way my projects handle database connections. 
+Just a simple project to standardize the way my Java projects handle database connections. 
 
 ### Example Usage
 The connection object supports just passing a Profile.Section from ini4j, or you can set the connection parameters manually.
