@@ -1,0 +1,5 @@
+*.class
+/.idea
+*.iml
+*.jar
+/target/maven-archiver/pom.properties
