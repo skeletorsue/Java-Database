@@ -1,24 +1,25 @@
 package com.skeletorsue;
 
+import org.ini4j.Profile;
+
 import java.sql.*;
 
 public class Database {
-    public String Label;
+    public ConnectionInfo conn_info;
 
     private Connection conn;
     private Statement statement;
-    private String Host, User, Password, Name, Driver, DriverClass;
-    private Integer Port;
+
+    public Database () {
+        conn_info = new ConnectionInfo();
+    }
+
+    public Database (Profile.Section Info) {
+        conn_info = new ConnectionInfo(Info);
+    }
 
     public Database(ConnectionInfo conn) {
-        Label = conn.Label;
-        Host = conn.Host;
-        Port = conn.Port;
-        User = conn.User;
-        Password = conn.Password;
-        Name = conn.Name;
-        Driver = conn.Driver;
-        DriverClass = conn.DriverClass();
+        conn_info = conn;
     }
 
     /**
@@ -32,8 +33,8 @@ public class Database {
             return this.conn;
 
         try {
-            Class.forName(this.DriverClass).newInstance();
-            this.conn = DriverManager.getConnection("jdbc:" + this.Driver + "://" + this.Host + ":" + this.Port + "/" + this.Name, this.User, this.Password);
+            Class.forName(conn_info.DriverClass()).newInstance();
+            this.conn = DriverManager.getConnection("jdbc:" + conn_info.Driver + "://" + conn_info.Host + ":" + conn_info.Port + "/" + conn_info.Name, conn_info.User, conn_info.Password);
         } catch (Exception sqle) {
             throw new SQLException(sqle.getMessage());
         }
