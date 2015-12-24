@@ -65,7 +65,7 @@ public final class ConnectionInfo {
         Host = "localhost";
         User = "root";
         Password = "password";
-        Name = "DB";
+        Name = null;
         Driver = "mysql";
         Port = 3306;
         Label = "Database Connection";
