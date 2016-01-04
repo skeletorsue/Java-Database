@@ -76,6 +76,17 @@ public class Database {
 	}
 
 	/**
+	 * Method to return a prepared statement
+	 *
+	 * @param query String The query to be prepared
+	 * @return a PreparedStatement that can have parameters bound to it and then executed
+	 * @throws SQLException
+	 */
+	public PreparedStatement prepare(String query) throws SQLException {
+		return this.connect().prepareStatement(query);
+	}
+
+	/**
 	 * Method to insert data to a table
 	 *
 	 * @param insertQuery String The Insert query
