@@ -100,4 +100,14 @@ public class Database {
 
 	}
 
+
+	/**
+	 * Close Sql Connection
+	 * 
+	 * @throws SQLException
+	 */
+	public void close() throws SQLException {
+		this.connect().close();
+	}
+
 }
